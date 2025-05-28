@@ -1,11 +1,12 @@
- 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Budget Calculator</title>
-  <link rel="stylesheet" href="/style.css">
+  <title>Budget App</title>
+  <link rel="stylesheet" href="/public/style.css">
 </head>
 <body>
-  <%- body %>
+  <div class="container">
+    <%- body %>
+  </div>
 </body>
 </html>
