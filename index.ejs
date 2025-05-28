@@ -1,27 +1,30 @@
- <% include layout %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<h1>Budget Calculator</h1>
-<h2>Balance: $<%= balance %></h2>
-<h3>Income: $<%= income %> | Expense: $<%= expense %></h3>
-
-<form action="/add" method="POST">
-  <select name="type">
-    <option value="income">Income</option>
-    <option value="expense">Expense</option>
-  </select>
-  <input type="number" name="amount" placeholder="Amount" required>
-  <input type="text" name="description" placeholder="Description">
-  <button type="submit">Add</button>
-</form>
-
-<ul>
-  <% transactions.forEach(t => { %>
-    <li>
-      <strong><%= t.type %>:</strong> $<%= t.amount %> - <%= t.description %>
-      <form action="/delete/<%= t._id %>" method="POST" style="display:inline;">
-        <button type="submit">Delete</button>
-      </form>
-    </li>
-  <% }) %>
-</ul>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+  <h1>Budget Dashboard</h1>
+  <p><strong>Income:</strong> $<%= income %></p>
+  <p><strong>Expense:</strong> $<%= expense %></p>
+  <p><strong>Balance:</strong> $<%= balance %></p>
+  
+  <a href="/add">Add Transaction</a>
+  
+  <h2>Transactions</h2>
+  <ul>
+    <% transactions.forEach(t => { %>
+      <li>
+        <%= t.date.toDateString() %> - 
+        <%= t.type %>: $<%= t.amount %> - 
+        <%= t.description %>
+      </li>
+    <% }) %>
+  </ul>
+  
+</body>
+</html>
